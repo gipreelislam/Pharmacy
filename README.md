@@ -4,7 +4,7 @@ Pharmacy System builded with "Java"
 1. cashier :
 - Consists of Friendly GUI to type Drugs IDs or names and customer ID if it's Delivery to display the total price (ID and Date are auto generated)
 - If the medicine not found it can get the alternative by accessing the usage group
-1. Inventory :
+2. Inventory :
 - Consists of a table consists of All the drugs
 - In each row the name of the medicine and it's type and the no. of blisters (the price depend on no. of blisters so the customer can tale an integer part of the blisters) and the manufacturer and the current and recommended quantity and it's usage to get the alternative if it's not found in the inventory (ID is auto generated)
 3 - Customers :
