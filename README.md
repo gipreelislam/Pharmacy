@@ -15,6 +15,6 @@ Pharmacy System builded with "Java"
   - can display payments of specific range and it's total revenue
 5. Reoprts and Analytics :
   - generate auto reports consists of :
-  - 1. revenu : revenu to specific range
-  - 2. Quantity of drugs : table consists of reporting about the medicine which current quantity under the recommended one
-  - 3. Best Seller Medicines : consist of the top 10 (Number can Change) Medicines sold in the last time
+    1. revenu : revenu to specific range
+    2. Quantity of drugs : table consists of reporting about the medicine which current quantity under the recommended one
+    3. Best Seller Medicines : consist of the top 10 (Number can Change) Medicines sold in the last time
