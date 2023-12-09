@@ -22,3 +22,7 @@ Pharmacy System builded with "Java"
 ## Database
 Database of the system consists of 4 tables as shown in the figure :
 ![Database consists of 4 tables](images/Database.jpg)
+
+## Medicine Table
+this system rely on the following table of drugs
+[Drug's Table](https://docs.google.com/spreadsheets/d/1u1fnSL-uNz0zvXHKjLGlzOhTFN_pTMDi6Mf_MPHXt3s/edit?usp=sharing).
