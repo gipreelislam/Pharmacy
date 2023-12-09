@@ -18,3 +18,7 @@ Pharmacy System builded with "Java"
     1. revenu : revenu to specific range
     2. Quantity of drugs : table consists of reporting about the medicine which current quantity under the recommended one
     3. Best Seller Medicines : consist of the top 10 (Number can Change) Medicines sold in the last time
+
+## Database
+Database of the system consists of 4 tables as shown in the figure :
+![Database consists of 4 tables](images/Database.jpg)
