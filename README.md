@@ -1,7 +1,7 @@
 # Pharmcay
 Pharmacy System builded with "Java"
 
-1. cashier :
+**1. cashier** :
   - Consists of Friendly GUI to type Drugs IDs or names and customer ID if it's Delivery to display the total price (ID and Date are auto generated)
   - If the medicine not found it can get the alternative by accessing the usage group
 2. Inventory :
