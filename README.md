@@ -1,4 +1,4 @@
-# Pharmcay
+# Pharmcay 1
 Pharmacy System builded with "Java"
 
 1. cashier :
