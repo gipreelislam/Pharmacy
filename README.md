@@ -1,4 +1,4 @@
-# Pharmcay 1
+# Pharmcay
 Pharmacy System builded with "Java"
 
 1. cashier :
@@ -21,7 +21,7 @@ Pharmacy System builded with "Java"
 
 ## Database
 Database of the system consists of 4 tables as shown in the figure :
-![Database consists of 4 tables](images/Database.jpg)
+![Database consists of 4 tables](images/Database.png)
 
 ## Medicine Table
 this system rely on the following table of drugs
