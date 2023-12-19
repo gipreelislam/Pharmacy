@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import static jdk.internal.icu.impl.Utility.*;
 import java.security.MessageDigest;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
@@ -25,34 +26,7 @@ public class Login extends javax.swing.JFrame {
 
     Connection con;
 
-    public static String sha1(String input) {
-        try {
-            // getInstance() method is called with algorithm SHA-1
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-
-            // digest() method is called
-            // to calculate message digest of the input string
-            // returned as array of byte
-            byte[] messageDigest = md.digest(input.getBytes());
-
-            // Convert byte array into signum representation
-            BigInteger no = new BigInteger(1, messageDigest);
-
-            // Convert message digest into hex value
-            String hashtext = no.toString(16);
-
-            // Add preceding 0s to make it 32 bit
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-
-            // return the HashText
-            return hashtext;
-        } // For specifying wrong message digest algorithms
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    
 
     public Login() {
         initComponents();
@@ -152,7 +126,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             String username = TextUserName.getText();
-            String password = sha1(Password.getText());
+            String password = Utility.sha1(Password.getText());
             String query = String.format("SELECT id FROM `employer` WHERE username = '%s' AND password = '%s'", username, password);
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
