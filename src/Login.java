@@ -160,7 +160,7 @@ public class Login extends javax.swing.JFrame {
                 frm.show();
                 dispose();
             } else {
-                ntcrct.setText("username of password not correct");
+                ntcrct.setText("username or password incorrect");
                 System.out.println("False");
             }
         } catch (SQLException ex) {
