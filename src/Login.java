@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-import static jdk.internal.icu.impl.Utility.*;
 import java.security.MessageDigest;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
@@ -18,13 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author Dell
- */
 public class Login extends javax.swing.JFrame {
-
-    Connection con;
 
     public Login() {
         initComponents();
@@ -32,13 +20,6 @@ public class Login extends javax.swing.JFrame {
         close.setOpaque(false);
         close.setContentAreaFilled(false);
         close.setBorderPainted(false);
-
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-
     }
 
     /**
@@ -126,7 +107,7 @@ public class Login extends javax.swing.JFrame {
             String username = TextUserName.getText();
             String password = Utility.sha1(Password.getText());
             String query = String.format("SELECT id FROM `employer` WHERE username = '%s' AND password = '%s'", username, password);
-            PreparedStatement stmt = con.prepareStatement(query);
+            PreparedStatement stmt = Utility.con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -174,6 +155,7 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Utility.ConnectToDB();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);

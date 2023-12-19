@@ -1,10 +1,24 @@
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Utility {
-    
+    static Connection con;
+
+    // Connection Function To DB pharmacy
+    public static void ConnectToDB() {
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    // SHA1 Hashing Function
     public static String sha1(String input) {
         try {
             // getInstance() method is called with algorithm SHA-1
