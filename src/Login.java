@@ -4,8 +4,18 @@
  * and open the template in the editor.
  */
 
-
+import java.security.MessageDigest;
+import java.util.logging.Formatter;
+import java.util.logging.LogRecord;
 import javax.swing.JOptionPane;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,12 +23,46 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    Connection con;
+
+    public static String sha1(String input) {
+        try {
+            // getInstance() method is called with algorithm SHA-1
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+
+            // digest() method is called
+            // to calculate message digest of the input string
+            // returned as array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+
+            // Add preceding 0s to make it 32 bit
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
+            // return the HashText
+            return hashtext;
+        } // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
 
     }
 
@@ -31,6 +75,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ntcrct = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,6 +88,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ntcrct.setForeground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(ntcrct, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 460, 300, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -59,6 +107,12 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, 30));
         getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 300, 30));
+
+        TextUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextUserNameActionPerformed(evt);
+            }
+        });
         getContentPane().add(TextUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 300, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -87,15 +141,36 @@ public class Login extends javax.swing.JFrame {
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         // TODO add your handling code here:
-        int n=JOptionPane.showConfirmDialog(null, "Do you want to close application","Select",JOptionPane.YES_NO_OPTION);
-        if(n==0){
+        int n = JOptionPane.showConfirmDialog(null, "Do you want to close application", "Select", JOptionPane.YES_NO_OPTION);
+        if (n == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_closeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            String username = TextUserName.getText();
+            String password = sha1(Password.getText());
+            String query = String.format("SELECT id FROM `employer` WHERE username = '%s' AND password = '%s'", username, password);
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                PharmacistDashboard frm = new PharmacistDashboard();
+                frm.show();
+                dispose();
+            } else {
+                ntcrct.setText("username of password not correct");
+                System.out.println("False");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TextUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextUserNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,5 +216,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel ntcrct;
     // End of variables declaration//GEN-END:variables
 }
