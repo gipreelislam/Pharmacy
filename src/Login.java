@@ -1,13 +1,4 @@
-
-import java.security.MessageDigest;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
 import javax.swing.JOptionPane;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
