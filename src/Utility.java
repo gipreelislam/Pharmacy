@@ -4,10 +4,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Utility {
-    static Connection con;
+
+    private static Connection con;
 
     // Connection Function To DB pharmacy
     public static void ConnectToDB() {
@@ -15,6 +17,16 @@ public class Utility {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "");
         } catch (SQLException ex) {
             System.out.println(ex);
+        }
+    }
+
+    public static ResultSet ExecQuery(String query) {
+        try {
+            ResultSet rs = con.prepareStatement(query).executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
         }
     }
 

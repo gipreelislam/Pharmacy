@@ -1,9 +1,12 @@
+
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
+
+    static String username;
 
     public Login() {
         initComponents();
@@ -95,19 +98,19 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            String username = TextUserName.getText();
+            username = TextUserName.getText();
             String password = Utility.sha1(Password.getText());
             String query = String.format("SELECT id FROM `employer` WHERE username = '%s' AND password = '%s'", username, password);
-            PreparedStatement stmt = Utility.con.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = Utility.ExecQuery(query);
 
             if (rs.next()) {
-                PharmacistDashboard frm = new PharmacistDashboard();
-                frm.show();
-                dispose();
+                ntcrct.setText("");
+                this.toBack();
+                PharmacistDashboard newframe = new PharmacistDashboard();
+                newframe.setVisible(true);
+                newframe.toFront();
             } else {
                 ntcrct.setText("username or password incorrect");
-                System.out.println("False");
             }
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -155,8 +158,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Password;
-    private javax.swing.JTextField TextUserName;
+    public javax.swing.JPasswordField Password;
+    public javax.swing.JTextField TextUserName;
     private javax.swing.JButton close;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
