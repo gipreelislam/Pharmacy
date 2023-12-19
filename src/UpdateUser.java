@@ -68,7 +68,7 @@ public class UpdateUser extends javax.swing.JFrame {
                 closeActionPerformed(evt);
             }
         });
-        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 64, 858, 11));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N

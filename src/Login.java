@@ -148,6 +148,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_closeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AdminDashboard ff = new AdminDashboard();
+        ff.show();
+        /*
         try {
             String username = TextUserName.getText();
             String password = sha1(Password.getText());
@@ -166,6 +169,7 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TextUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUserNameActionPerformed
