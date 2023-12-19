@@ -23,6 +23,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
+        exit.setOpaque(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+        jButton5.setOpaque(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setBorderPainted(false);
 
     }
 //
@@ -113,7 +119,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 exitActionPerformed(evt);
             }
         });
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 680, 130, 110));
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 20, 130, 110));
 
         getAccessibleContext().setAccessibleDescription("");
 
