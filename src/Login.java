@@ -57,6 +57,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        close.setOpaque(false);
+        close.setContentAreaFilled(false);
+        close.setBorderPainted(false);
 
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "");
@@ -90,7 +93,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ntcrct.setForeground(new java.awt.Color(255, 51, 51));
-        getContentPane().add(ntcrct, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 460, 300, 20));
+        getContentPane().add(ntcrct, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, 330, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,38 +103,37 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText(" Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 90, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 140, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, 80, 30));
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 300, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 130, 40));
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 330, 40));
 
         TextUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextUserNameActionPerformed(evt);
             }
         });
-        getContentPane().add(TextUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 300, 30));
+        getContentPane().add(TextUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 330, 40));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         jButton1.setText("Login");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, 110, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 330, 40));
 
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit_02.png"))); // NOI18N
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeActionPerformed(evt);
             }
         });
-        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1304, 13, 50, 30));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, 70, 60));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login_background.PNG"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -148,16 +150,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_closeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AdminDashboard ff = new AdminDashboard();
-        ff.show();
-        /*
         try {
             String username = TextUserName.getText();
             String password = sha1(Password.getText());
             String query = String.format("SELECT id FROM `employer` WHERE username = '%s' AND password = '%s'", username, password);
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 PharmacistDashboard frm = new PharmacistDashboard();
                 frm.show();
@@ -169,7 +168,6 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TextUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUserNameActionPerformed

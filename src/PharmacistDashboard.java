@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Dell
@@ -18,7 +17,16 @@ public class PharmacistDashboard extends javax.swing.JFrame {
      */
     public PharmacistDashboard() {
         initComponents();
-          this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        exit1.setOpaque(false);
+        exit1.setContentAreaFilled(false);
+        exit1.setBorderPainted(false);
+        jButton3.setOpaque(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setBorderPainted(false);
+        jButton6.setOpaque(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setBorderPainted(false);
 
     }
 
@@ -32,88 +40,99 @@ public class PharmacistDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Dashboard = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        exit = new javax.swing.JButton();
+        cahier = new javax.swing.JButton();
         exit1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminDashboardBackground.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminDashboardBackground.png"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(99999, 99999));
+        jLabel2.setMinimumSize(new java.awt.Dimension(9999, 9999));
+        jLabel2.setPreferredSize(new java.awt.Dimension(9999, 76899999));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 89, 1381, 10));
 
         Dashboard.setFont(new java.awt.Font("Tahoma", 1, 50)); // NOI18N
-        Dashboard.setForeground(new java.awt.Color(255, 255, 255));
+        Dashboard.setForeground(new java.awt.Color(0, 0, 0));
         Dashboard.setText("Dashboard");
         getContentPane().add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 290, -1));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jButton2.setText(" Add Customer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 280, 240));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addMedicine.png"))); // NOI18N
         jButton1.setText("Add Medicine");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 351, -1));
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        jButton2.setText("Profile");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 350, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 280, 240));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
-        jButton4.setText("Update Medicine");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 351, -1));
+        jButton4.setText("Suppliers");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 280, 240));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/viewUser.png"))); // NOI18N
-        jButton3.setText("View Medicine");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 351, -1));
+        jButton3.setToolTipText("Caculator");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, 120, -1));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/viewBill.png"))); // NOI18N
         jButton5.setText("View Bill");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 350, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, 580, 70));
 
-        exit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sellMedicine.png"))); // NOI18N
-        exit.setText("Sell Medicine");
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 350, -1));
+        cahier.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cahier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cash-machine.png"))); // NOI18N
+        cahier.setText("Cashier");
+        getContentPane().add(cahier, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 280, 240));
 
         exit1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
-        exit1.setText("Exit");
+        exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit_02.png"))); // NOI18N
+        exit1.setToolTipText("Exit");
         exit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exit1ActionPerformed(evt);
             }
         });
-        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 570, 350, -1));
+        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 10, 70, -1));
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        jButton6.setText("Logout");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 570, 350, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/adminDashboardBackground.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, -1));
+        jButton6.setToolTipText("Logout");
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 640, 120, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
         // TODO add your handling code here:
-        int n=JOptionPane.showConfirmDialog(null, "Do you want to Exit application","Select",JOptionPane.YES_NO_OPTION);
-        if(n==0){
+        int n = JOptionPane.showConfirmDialog(null, "Do you want to Exit application", "Select", JOptionPane.YES_NO_OPTION);
+        if (n == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_exit1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +171,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dashboard;
-    private javax.swing.JButton exit;
+    private javax.swing.JButton cahier;
     private javax.swing.JButton exit1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
