@@ -26,8 +26,6 @@ public class Login extends javax.swing.JFrame {
 
     Connection con;
 
-    
-
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
