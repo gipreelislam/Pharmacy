@@ -119,14 +119,14 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         getContentPane().add(cahier, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 280, 240));
 
         exit1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit_02.png"))); // NOI18N
+        exit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         exit1.setToolTipText("Exit");
         exit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exit1ActionPerformed(evt);
             }
         });
-        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 10, 70, -1));
+        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 10, 40, -1));
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
