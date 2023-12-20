@@ -18,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dell
  */
-public class Customer extends javax.swing.JFrame {
+public class Edit extends javax.swing.JFrame {
 DefaultTableModel dtm ;
     /**
      * Creates new form AddUser
      */
-    public Customer() {
+    public Edit() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -133,6 +133,7 @@ DefaultTableModel dtm ;
         getContentPane().add(cust_adress, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 410, -1));
 
         update.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        update.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\OneDrive\\Desktop\\icons8-edit-15.png")); // NOI18N
         update.setText("Update");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +176,7 @@ DefaultTableModel dtm ;
         getContentPane().add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 120, -1));
 
         show_ALL.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        show_ALL.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-show-20.png")); // NOI18N
         show_ALL.setText("show All");
         show_ALL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +189,7 @@ DefaultTableModel dtm ;
         getContentPane().add(cust_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 300, -1));
 
         delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-delete-20.png")); // NOI18N
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,14 +233,15 @@ DefaultTableModel dtm ;
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         try {
+            int id = Integer.parseInt(cust_id.getText());
             String name = cust_name.getText();
-            String phone = '2' + cust_phone.getText(); // Add '2' to the phone number
+            String phone = cust_phone.getText();
             String adress = cust_adress.getText();
-            PreparedStatement stmt = Utility.con.prepareStatement("insert into customer (name , phone , address ) values (?,?,?)");
-            // ID Added Automatically
-            stmt.setString(1,name);
-            stmt.setString(2,phone);
-            stmt.setString(3, adress);
+            PreparedStatement stmt = Utility.con.prepareStatement("insert into customer (id , name , phone , address ) values (?,?,?,?)");
+            stmt.setInt(1,id);
+            stmt.setString(2,name);
+            stmt.setString(3,phone);
+            stmt.setString(4, adress);
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Added successfuly");
@@ -314,18 +318,14 @@ DefaultTableModel dtm ;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -334,7 +334,7 @@ DefaultTableModel dtm ;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Customer().setVisible(true);
+                new Edit().setVisible(true);
             }
         });
     }
