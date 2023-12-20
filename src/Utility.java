@@ -4,12 +4,18 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class Utility {
 
-    private static Connection con;
+    public static Connection con;
+   
+
 
     // Connection Function To DB pharmacy
     public static void ConnectToDB() {
@@ -22,7 +28,7 @@ public class Utility {
 
     public static ResultSet ExecQuery(String query) {
         try {
-            ResultSet rs = con.prepareStatement(query).executeQuery();
+           ResultSet rs = con.prepareStatement(query).executeQuery();
             return rs;
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -59,4 +65,5 @@ public class Utility {
             throw new RuntimeException(e);
         }
     }
+    
 }
