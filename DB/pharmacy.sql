@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 05:40 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Dec 21, 2023 at 07:36 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -180,7 +180,8 @@ CREATE TABLE `payment` (
   `cost` int(11) UNSIGNED NOT NULL,
   `paid` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'the default of the payment is paid',
   `employer_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `customer_id` int(10) UNSIGNED ZEROFILL NOT NULL
+  `customer_id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `date_time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -256,7 +257,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT COMMENT 'id consist of 10 digits', AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT COMMENT 'id consist of 10 digits', AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `drug`
