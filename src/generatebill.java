@@ -1,7 +1,7 @@
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -15,11 +15,11 @@ import javax.swing.JOptionPane;
  */
 public class generatebill extends javax.swing.JFrame {
 
-    /**
-     * Creates new form generatebill
-     */
+    
     public generatebill() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     private void filllabel(){
        /*  

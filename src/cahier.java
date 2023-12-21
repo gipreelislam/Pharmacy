@@ -109,7 +109,6 @@ public class cahier extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-cashier-35.png")); // NOI18N
         jLabel1.setText("Cashier Window");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -131,7 +130,6 @@ public class cahier extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(204, 204, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-drug-40.png")); // NOI18N
         jButton4.setText("Inventory");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,13 +140,11 @@ public class cahier extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(204, 204, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-view-40.png")); // NOI18N
         jButton5.setText("View Bill");
 
         jButton6.setBackground(new java.awt.Color(204, 204, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-user-40.png")); // NOI18N
         jButton6.setText("Customers");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +155,6 @@ public class cahier extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(204, 204, 255));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-return-40.png")); // NOI18N
         jButton7.setText("Return");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +221,7 @@ public class cahier extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Drug Type :");
 
-        type_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "injection", "Tablet", "Liquid" }));
+        type_txt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "injection", "Tablet", "Liquid" }));
         type_txt.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 type_txtItemStateChanged(evt);
@@ -276,7 +271,6 @@ public class cahier extends javax.swing.JFrame {
         jLabel9.setText("Employer name  :");
 
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-add-user-male-30.png")); // NOI18N
         jButton1.setText("Add customer");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +279,6 @@ public class cahier extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-cheque-30.png")); // NOI18N
         jButton2.setText("Generate Bill");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +287,6 @@ public class cahier extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\my computer\\Downloads\\icons8-cash-register-30.png")); // NOI18N
         jButton3.setText("Calculator");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
