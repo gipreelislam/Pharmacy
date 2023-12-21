@@ -455,7 +455,6 @@ public class cahier extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          new calc().show();
-         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void srch_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srch_txtActionPerformed
