@@ -23,15 +23,13 @@ public class Inventory extends javax.swing.JFrame {
      * Creates new form Inventory
      */
     DefaultTableModel dtm ;
-    DefaultTableModel model;
 
     public Inventory() {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
-                dtm = new DefaultTableModel();
-
-        Utility.ConnectToDB();
+     setLocationRelativeTo(null);
+     dtm = new DefaultTableModel();
+     Utility.ConnectToDB();
      dtm.addColumn("id");
      dtm.addColumn("name");
      dtm.addColumn("price");
@@ -102,6 +100,11 @@ public class Inventory extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_show);
 
         srch_txt.setName(""); // NOI18N
+        srch_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                srch_txtActionPerformed(evt);
+            }
+        });
         srch_txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 srch_txtKeyReleased(evt);
@@ -243,6 +246,10 @@ public class Inventory extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_srch_txtKeyReleased
+
+    private void srch_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srch_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_srch_txtActionPerformed
 
     /**
      * @param args the command line arguments
