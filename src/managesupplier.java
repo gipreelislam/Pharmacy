@@ -1,3 +1,13 @@
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -12,9 +22,38 @@ public class managesupplier extends javax.swing.JFrame {
     /**
      * Creates new form managesupplier
      */
+    DefaultTableModel dtm ;
     public managesupplier() {
         initComponents();
+         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+     setLocationRelativeTo(null);
+     dtm = new DefaultTableModel();
+     Utility.ConnectToDB();
+     dtm.addColumn("id");
+     dtm.addColumn("name");
+     dtm.addColumn("Phone");
+     filltable();
     }
+     private void filltable(){
+         
+              
+        try {
+            dtm.setRowCount(0);
+            String query = "select id, name,phone_number from supplier order by id";
+            ResultSet rs = Utility.ExecQuery(query);
+            
+            
+            while(rs.next()){
+                
+                dtm.addRow(new Object[] {rs.getInt(1),rs.getString(2),rs.getString(3)});
+                
+            }
+            tbl_show.setModel(dtm);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inventory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
+                   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,6 +218,12 @@ public class managesupplier extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Supplier phone");
 
+        s_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                s_nameKeyReleased(evt);
+            }
+        });
+
         Add.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-add-male-user-group-50.png"))); // NOI18N
         Add.setText("Add Suppliers");
@@ -290,16 +335,89 @@ public class managesupplier extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        // TODO add your handling code here:
+         try {
+            int id = Integer.parseInt(s_id.getText());
+            String name = s_name.getText();
+            String phone = s_phone.getText();
+           
+            PreparedStatement stmt = Utility.con.prepareStatement("insert into supplier (id , name , phone_number  ) values (?,?,?)");
+            stmt.setInt(1,id);
+            stmt.setString(2,name);
+            stmt.setString(3,phone);
+
+
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Added successfuly");
+            filltable();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "failed");
+        }
+                                       
     }//GEN-LAST:event_AddActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(s_id.getText());
+            String name = s_name.getText();
+            String phone = s_phone.getText();
+           
+            PreparedStatement stmt = Utility.con.prepareStatement("update supplier set name = ? , phone_number = ?  where id = ?");
+            stmt.setString(1,name);
+            stmt.setString(2,phone);
+            stmt.setInt(3,id);
+
+
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Edited successfuly");
+            filltable();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "failed");
+        }
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
+           try {
+                String name = s_name.getText();
+                PreparedStatement stmt = Utility.con.prepareStatement("delete from supplier where name = ? ");
+                stmt.setString(1,name);
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "deleted successfuly");
+            filltable();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "failed");
+        
+            }
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void s_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_nameKeyReleased
+        // TODO add your handling code here:
+        
+        
+              if(s_name.getText()!=null){
+            try {
+                String search = s_name.getText();
+                dtm.setRowCount(0);
+                //String query = String.format("select id, name,price,type,number_of_blisters,current_quantity,min_quantity,drug_class,supplier_id from drug WHERE name = '%s' ", search);
+                //   ResultSet rs = Utility.ExecQuery(query);
+                PreparedStatement stmt = Utility.con.prepareStatement("select id, name , phone_number from supplier  WHERE name LIKE ? ");
+                stmt.setString(1,"%" +search + "%");
+                ResultSet rs = stmt.executeQuery();
+
+                while(rs.next()){
+
+                    dtm.addRow(new Object[] {rs.getInt(1),rs.getString(2),rs.getString(3)});
+
+                }
+                tbl_show.setModel(dtm);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+        
+    
+    }//GEN-LAST:event_s_nameKeyReleased
 
     /**
      * @param args the command line arguments
