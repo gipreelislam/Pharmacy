@@ -167,7 +167,7 @@ DefaultTableModel dtm ;
 
         save.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        save.setText("Save");
+        save.setText("Add");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveActionPerformed(evt);
