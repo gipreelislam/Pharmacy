@@ -708,6 +708,7 @@ public class AddDrug extends javax.swing.JFrame {
 
     private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
         // TODO add your handling code here:
+        new managesupplier().show();
     }//GEN-LAST:event_update1ActionPerformed
 
     private void s_idItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_s_idItemStateChanged
