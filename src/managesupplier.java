@@ -320,6 +320,7 @@ public class managesupplier extends javax.swing.JFrame {
         // TODO add your handling code here:
         PharmacistDashboard newframe = new PharmacistDashboard();
         newframe.show();
+        dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -331,7 +332,8 @@ public class managesupplier extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+new info().show();
+        dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
