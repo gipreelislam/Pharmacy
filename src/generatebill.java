@@ -23,7 +23,10 @@ public class generatebill extends javax.swing.JFrame {
        Utility.ConnectToDB();
        fillcombobox();
        d_name.setText(cahier.f_name);
+       if(cahier.check == true){
+           
        c_name.setText(cahier.c_n);
+       }
         
     }
      private void fillcombobox(){

@@ -25,7 +25,7 @@ public class cahier extends javax.swing.JFrame  {
       static String f_name ;
       static String c_n ; 
       static int ccc_id ;
-      static boolean check; 
+      static boolean check ; 
 
     public cahier() {
         initComponents();
@@ -43,13 +43,13 @@ public class cahier extends javax.swing.JFrame  {
      dtm.addColumn("supplier_id"); 
       f_name =  (String) d_f_name.getSelectedItem();
       c_n   = (String)c_name.getSelectedItem();
-      check = c_check.isSelected();
      filltable();
      filldrugnamecombobox();
      fillcustomernamecombobox();
      fillemployeridcombobox();
      filldrugpricecombobox();
      set_id();
+     selected();
 
     }
     private void updatequantity(){
@@ -62,6 +62,11 @@ public class cahier extends javax.swing.JFrame  {
             JOptionPane.showMessageDialog(this, "failed");
         }
         
+    }
+    private boolean selected(){
+    if (c_check.isSelected())
+        check = false;
+         return check;
     }
     private void fillemployeridcombobox(){
    
