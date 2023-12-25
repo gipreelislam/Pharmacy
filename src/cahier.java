@@ -25,6 +25,7 @@ public class cahier extends javax.swing.JFrame  {
       static String f_name ;
       static String c_n ; 
       static int ccc_id ;
+      static boolean check; 
 
     public cahier() {
         initComponents();
@@ -42,7 +43,7 @@ public class cahier extends javax.swing.JFrame  {
      dtm.addColumn("supplier_id"); 
       f_name =  (String) d_f_name.getSelectedItem();
       c_n   = (String)c_name.getSelectedItem();
-      
+      check = c_check.isSelected();
      filltable();
      filldrugnamecombobox();
      fillcustomernamecombobox();
@@ -688,20 +689,30 @@ public class cahier extends javax.swing.JFrame  {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
        f_name =  (String) d_f_name.getSelectedItem();
         c_n   = (String)c_name.getSelectedItem();
         int emp_id = Integer.parseInt( (String)e_id.getText());
          int d_price = Integer.parseInt((String)d_f_price.getSelectedItem());
          //ccc_id =  Integer.parseInt((String)c_idd.getSelectedItem());
-         set_id();
          
+         if(c_check.isSelected()){
+         try {
+            PreparedStatement stmt = Utility.con.prepareStatement("insert into payment (employer_id , cost ) values (?,?)");
+            stmt.setInt(1,emp_id);
+            stmt.setInt(2, d_price);
+            stmt.executeUpdate();
+            updatequantity();
+            JOptionPane.showMessageDialog(this, "Purchased successfully");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "failed");
+        }
+         }
+         else{
        
         try {
-            
-            
-         
-            
-           
+            set_id();
             PreparedStatement stmt = Utility.con.prepareStatement("insert into payment (employer_id , customer_id , cost ) values (?,?,?)");
             stmt.setInt(1,emp_id);
             stmt.setInt(2,ccc_id );
@@ -713,6 +724,7 @@ public class cahier extends javax.swing.JFrame  {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "failed");
         }
+         }
         generatebill newframe = new generatebill();
          newframe.show();
         //new Bill().show();
