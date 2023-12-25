@@ -232,7 +232,6 @@ public class cahier extends javax.swing.JFrame  {
         c_name = new javax.swing.JComboBox<>();
         e_id = new javax.swing.JTextField();
         d_f_price = new javax.swing.JComboBox<>();
-        refresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -445,16 +444,21 @@ public class cahier extends javax.swing.JFrame  {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Drug price  :");
 
+        d_f_name.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                d_f_nameItemStateChanged(evt);
+            }
+        });
+
+        c_name.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                c_nameItemStateChanged(evt);
+            }
+        });
+
         e_id.setEnabled(false);
 
         d_f_price.setEnabled(false);
-
-        refresh.setText("Refresh");
-        refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -475,9 +479,7 @@ public class cahier extends javax.swing.JFrame  {
                                         .addComponent(jButton1))
                                     .addComponent(c_check))
                                 .addGap(123, 123, 123)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(refresh)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,14 +546,9 @@ public class cahier extends javax.swing.JFrame  {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
                                 .addComponent(e_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(c_check))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(refresh)))
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(c_check)
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -732,9 +729,9 @@ new info().show();
        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+    private void d_f_nameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_d_f_nameItemStateChanged
          try {
-         set_id();
+         
           
             
             PreparedStatement stmt = Utility.con.prepareStatement("select price from drug where name = ?");
@@ -753,7 +750,11 @@ new info().show();
             System.out.println("failed");
         }
      
-    }//GEN-LAST:event_refreshActionPerformed
+    }//GEN-LAST:event_d_f_nameItemStateChanged
+
+    private void c_nameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_c_nameItemStateChanged
+        set_id();
+    }//GEN-LAST:event_c_nameItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -815,7 +816,6 @@ new info().show();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton refresh;
     private javax.swing.JTextField srch_txt;
     private javax.swing.JTable tbl_show;
     private javax.swing.JComboBox<String> type_txt;

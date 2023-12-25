@@ -126,8 +126,6 @@ public class AddDrug extends javax.swing.JFrame {
         delete = new javax.swing.JButton();
         update1 = new javax.swing.JButton();
         d_quanity = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        d_id = new javax.swing.JTextField();
         d_price = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -373,8 +371,6 @@ public class AddDrug extends javax.swing.JFrame {
 
         d_quanity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100" }));
 
-        jLabel4.setText("Drug id");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -420,13 +416,9 @@ public class AddDrug extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(update1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(s_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(d_id))
+                                .addComponent(s_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(19, 19, 19)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -466,11 +458,7 @@ public class AddDrug extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(b_num, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(s_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(d_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(Adddrug, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -478,7 +466,7 @@ public class AddDrug extends javax.swing.JFrame {
                     .addComponent(update1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -507,8 +495,8 @@ public class AddDrug extends javax.swing.JFrame {
             String drug_class = (String) d_class.getSelectedItem();
             int drug_min_quantity = Integer.parseInt((String) d_min_quantity.getSelectedItem());
             int drug_quanity = Integer.parseInt( (String) d_quanity.getSelectedItem());
-            int drug_id =Integer.parseInt(d_id.getText());
-            PreparedStatement stmt = Utility.con.prepareStatement("insert into drug (name,price,type,number_of_blisters,current_quantity,min_quantity,drug_class,supplier_id,id ) values (?,?,?,?,?,?,?,?,?)");
+          
+            PreparedStatement stmt = Utility.con.prepareStatement("insert into drug (name,price,type,number_of_blisters,current_quantity,min_quantity,drug_class,supplier_id) values (?,?,?,?,?,?,?,?)");
             stmt.setString(1,drug_name);
             stmt.setInt(2, price);
             stmt.setString(3,type);
@@ -517,7 +505,7 @@ public class AddDrug extends javax.swing.JFrame {
             stmt.setInt(6,drug_min_quantity);
             stmt.setString(7,drug_class );
             stmt.setInt(8,sup_id );
-            stmt.setInt(9, drug_id);
+           
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Added successfuly");
 
@@ -672,17 +660,16 @@ new info().show();
             String drug_class = (String) d_class.getSelectedItem();
             int drug_min_quantity = Integer.parseInt((String) d_min_quantity.getSelectedItem());
             int drug_quanity = Integer.parseInt( (String) d_quanity.getSelectedItem());
-            int drug_id =Integer.parseInt(d_id.getText());
-            PreparedStatement stmt = Utility.con.prepareStatement("update drug set name = ? , price = ? , type = ? , number_of_blisters = ? , current_quantity = ? , min_quantity = ? , drug_class = ? , supplier_id = ? where id = ?  ");
-            stmt.setString(1,drug_name);
-            stmt.setInt(2, price);
-            stmt.setString(3,type);
-            stmt.setInt(4,bulister_num);
-            stmt.setInt(5, drug_quanity);
-            stmt.setInt(6,drug_min_quantity);
-            stmt.setString(7,drug_class );
-            stmt.setInt(8,sup_id );
-            stmt.setInt(9, drug_id);
+          
+            PreparedStatement stmt = Utility.con.prepareStatement("update drug set price = ? , type = ? , number_of_blisters = ? , current_quantity = ? , min_quantity = ? , drug_class = ? , supplier_id = ? where name = ?  ");
+            stmt.setInt(1, price);
+            stmt.setString(2,type);
+            stmt.setInt(3,bulister_num);
+            stmt.setInt(4, drug_quanity);
+            stmt.setInt(5,drug_min_quantity);
+            stmt.setString(6,drug_class );
+            stmt.setInt(7,sup_id );
+            stmt.setString(8, drug_name);
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "edited successfuly");
@@ -717,26 +704,6 @@ new info().show();
     private void s_idItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_s_idItemStateChanged
         // TODO add your handling code here:
         
-          try {
-         
-          
-            
-            PreparedStatement stmt = Utility.con.prepareStatement("select id from supplier where name = ?");
-            stmt.setString(1, (String) s_name.getSelectedItem());
-            ResultSet rs = stmt.executeQuery();
-            
-            
-            
-            while(rs.next()){
-                
-               s_id.setSelectedItem(rs.getString(1));
-                
-            }
-            //tbl_show.setModel(dtm);
-        } catch (SQLException ex) {
-            System.out.println("failed");
-        }
-              
                    
         
     }//GEN-LAST:event_s_idItemStateChanged
@@ -780,7 +747,6 @@ new info().show();
     private javax.swing.JButton Adddrug;
     private javax.swing.JComboBox<String> b_num;
     private javax.swing.JComboBox<String> d_class;
-    private javax.swing.JTextField d_id;
     private javax.swing.JComboBox<String> d_min_quantity;
     private javax.swing.JTextField d_name;
     private javax.swing.JTextField d_price;
@@ -795,7 +761,6 @@ new info().show();
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
