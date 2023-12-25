@@ -23,22 +23,25 @@ public class generatebill extends javax.swing.JFrame {
        Utility.ConnectToDB();
        fillcombobox();
        d_name.setText(cahier.f_name);
+       c_name.setText(cahier.c_n);
         
     }
      private void fillcombobox(){
    
       try {
          //   dtm.setRowCount(0);
-            String query = "select employer_id , customer_id , date_time , cost  from payment ORDER BY id DESC LIMIT 1";
+            String query = "select employer_id, date_time , cost  from payment ORDER BY id DESC LIMIT 1";
             ResultSet rs = Utility.ExecQuery(query);
             
             
             while(rs.next()){
                 
                 e_id.setText(rs.getString(1));
-                c_id.setText(rs.getString(2));
-                 dt.setText(rs.getString(3));
-                  total.setText(rs.getString(4));
+               
+                 dt.setText(rs.getString(2));
+                  total.setText(rs.getString(3));
+                  d_price.setText(rs.getString(3));
+                  
                 
             }
             //tbl_show.setModel(dtm);
@@ -61,7 +64,7 @@ public class generatebill extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         d_name = new javax.swing.JLabel();
-        c_id = new javax.swing.JLabel();
+        c_name = new javax.swing.JLabel();
         e_id = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -107,10 +110,10 @@ public class generatebill extends javax.swing.JFrame {
         d_name.setForeground(new java.awt.Color(0, 0, 0));
         d_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
 
-        c_id.setBackground(new java.awt.Color(255, 255, 255));
-        c_id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        c_id.setForeground(new java.awt.Color(0, 0, 0));
-        c_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
+        c_name.setBackground(new java.awt.Color(255, 255, 255));
+        c_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        c_name.setForeground(new java.awt.Color(0, 0, 0));
+        c_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
 
         e_id.setBackground(new java.awt.Color(255, 255, 255));
         e_id.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -145,7 +148,7 @@ public class generatebill extends javax.swing.JFrame {
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Customer id :");
+        jLabel19.setText("Customer name :");
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -155,7 +158,7 @@ public class generatebill extends javax.swing.JFrame {
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Drug Name :");
+        jLabel20.setText("Drug price :");
 
         d_price.setBackground(new java.awt.Color(255, 255, 255));
         d_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -183,7 +186,7 @@ public class generatebill extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(d_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(c_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(c_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(e_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +215,7 @@ public class generatebill extends javax.swing.JFrame {
                     .addComponent(d_name, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(c_id, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c_name, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -279,7 +282,7 @@ public class generatebill extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel c_id;
+    private javax.swing.JLabel c_name;
     private javax.swing.JLabel d_name;
     private javax.swing.JLabel d_price;
     private javax.swing.JLabel dt;

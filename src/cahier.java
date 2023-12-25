@@ -23,6 +23,8 @@ public class cahier extends javax.swing.JFrame  {
      */
      DefaultTableModel dtm ;
       static String f_name ;
+      static String c_n ; 
+      static int ccc_id ;
 
     public cahier() {
         initComponents();
@@ -39,11 +41,15 @@ public class cahier extends javax.swing.JFrame  {
      dtm.addColumn("drug_class");
      dtm.addColumn("supplier_id"); 
       f_name =  (String) d_f_name.getSelectedItem();
+      c_n   = (String)c_name.getSelectedItem();
+      
      filltable();
      filldrugnamecombobox();
-     fillcustomeridcombobox();
+     fillcustomernamecombobox();
      fillemployeridcombobox();
      filldrugpricecombobox();
+     set_id();
+
     }
     private void updatequantity(){
         try{
@@ -60,13 +66,17 @@ public class cahier extends javax.swing.JFrame  {
    
       try {
          //   dtm.setRowCount(0);
-            String query = "select id from employer ORDER BY id";
-            ResultSet rs = Utility.ExecQuery(query);
+            PreparedStatement stmt = Utility.con.prepareStatement("select id from employer where username = ?");
+            stmt.setString(1, Login.username);
+            ResultSet rs = stmt.executeQuery();
             
+            
+            
+
             
             while(rs.next()){
                 
-                c_id.addItem(rs.getString(1));
+                e_id.setText(rs.getString(1));
                
                 
             }
@@ -75,25 +85,52 @@ public class cahier extends javax.swing.JFrame  {
             System.out.println("failed");
         }
      }
-    private void fillcustomeridcombobox(){
+    private void set_id(){
+    
+    try{
+    
+     PreparedStatement stm = Utility.con.prepareStatement("select id from customer where name = ?");
+             stm.setString(1,c_n );
+            ResultSet rss = stm.executeQuery();
+            
+           
+            
+            while(rss.next()){
+                
+              ccc_id = (rss.getInt(1));
+               
+                
+            }
+    }
+    catch(SQLException ex){
+        System.out.println("erorr");
+    }
+    
+    }
+    
+    private void fillcustomernamecombobox(){
    
       try {
          //   dtm.setRowCount(0);
-            String query = "select id from customer ORDER BY id";
+            String query = "select name from customer ORDER BY id";
             ResultSet rs = Utility.ExecQuery(query);
             
             
             while(rs.next()){
                 
-                c_id.addItem(rs.getString(1));
+                c_name.addItem(rs.getString(1));
                
                 
             }
             //tbl_show.setModel(dtm);
         } catch (SQLException ex) {
-            System.out.println("failed");
+            System.out.println("ffailed");
         }
      }
+    
+     
+    
+   
      private void filldrugnamecombobox(){
    
       try {
@@ -110,7 +147,7 @@ public class cahier extends javax.swing.JFrame  {
             }
             //tbl_show.setModel(dtm);
         } catch (SQLException ex) {
-            System.out.println("failed");
+            System.out.println("ffffffailed");
         }
      }
       private void filldrugpricecombobox(){
@@ -131,7 +168,7 @@ public class cahier extends javax.swing.JFrame  {
             }
             //tbl_show.setModel(dtm);
         } catch (SQLException ex) {
-            System.out.println("failed");
+            System.out.println("fffffffailed");
         }
      }
     public String get_d_name(){
@@ -154,7 +191,7 @@ public class cahier extends javax.swing.JFrame  {
             }
             tbl_show.setModel(dtm);
         } catch (SQLException ex) {
-            System.out.println("failed");
+            System.out.println("faailed");
         }
               
                    }
@@ -192,7 +229,7 @@ public class cahier extends javax.swing.JFrame  {
         c_check = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         d_f_name = new javax.swing.JComboBox<>();
-        c_id = new javax.swing.JComboBox<>();
+        c_name = new javax.swing.JComboBox<>();
         e_id = new javax.swing.JTextField();
         d_f_price = new javax.swing.JComboBox<>();
         refresh = new javax.swing.JButton();
@@ -367,7 +404,7 @@ public class cahier extends javax.swing.JFrame  {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Customer Id :");
+        jLabel8.setText("Customer name :");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -408,6 +445,10 @@ public class cahier extends javax.swing.JFrame  {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Drug price  :");
 
+        e_id.setEnabled(false);
+
+        d_f_price.setEnabled(false);
+
         refresh.setText("Refresh");
         refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -428,12 +469,23 @@ public class cahier extends javax.swing.JFrame  {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jButton1))
+                                    .addComponent(c_check))
+                                .addGap(123, 123, 123)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(refresh)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(d_f_name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(c_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(c_name, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(73, 73, 73)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -444,18 +496,7 @@ public class cahier extends javax.swing.JFrame  {
                                         .addGap(37, 37, 37)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(e_id)
-                                    .addComponent(d_f_price, 0, 220, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(109, 109, 109)
-                                        .addComponent(jButton1))
-                                    .addComponent(c_check))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(refresh)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(d_f_price, 0, 220, Short.MAX_VALUE))))
                         .addGap(16, 16, 16))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,7 +540,7 @@ public class cahier extends javax.swing.JFrame  {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel8)
-                                .addComponent(c_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(c_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
                                 .addComponent(e_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -651,16 +692,22 @@ public class cahier extends javax.swing.JFrame  {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
        f_name =  (String) d_f_name.getSelectedItem();
-        int emp_id = Integer.parseInt( e_id.getText());
-         int cust_id = Integer.parseInt((String)c_id.getSelectedItem());
+        c_n   = (String)c_name.getSelectedItem();
+        int emp_id = Integer.parseInt( (String)e_id.getText());
          int d_price = Integer.parseInt((String)d_f_price.getSelectedItem());
+         //ccc_id =  Integer.parseInt((String)c_idd.getSelectedItem());
+         set_id();
+         
        
         try {
             
+            
          
+            
+           
             PreparedStatement stmt = Utility.con.prepareStatement("insert into payment (employer_id , customer_id , cost ) values (?,?,?)");
             stmt.setInt(1,emp_id);
-            stmt.setInt(2, cust_id);
+            stmt.setInt(2,ccc_id );
             stmt.setInt(3, d_price);
             stmt.executeUpdate();
             updatequantity();
@@ -687,7 +734,7 @@ new info().show();
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
          try {
-         
+         set_id();
           
             
             PreparedStatement stmt = Utility.con.prepareStatement("select price from drug where name = ?");
@@ -745,7 +792,7 @@ new info().show();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox c_check;
-    private javax.swing.JComboBox<String> c_id;
+    private javax.swing.JComboBox<String> c_name;
     private javax.swing.JComboBox<String> d_f_name;
     private javax.swing.JComboBox<String> d_f_price;
     private javax.swing.JTextField e_id;

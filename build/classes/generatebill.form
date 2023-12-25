@@ -69,7 +69,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="d_name" max="32767" attributes="0"/>
-                              <Component id="c_id" max="32767" attributes="0"/>
+                              <Component id="c_name" max="32767" attributes="0"/>
                               <Component id="e_id" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -109,7 +109,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="c_id" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="c_name" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jLabel19" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -201,7 +201,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="c_id">
+        <Component class="javax.swing.JLabel" name="c_name">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -334,7 +334,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Customer id :"/>
+            <Property name="text" type="java.lang.String" value="Customer name :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
@@ -362,7 +362,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Drug Name :"/>
+            <Property name="text" type="java.lang.String" value="Drug price :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="d_price">
