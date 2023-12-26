@@ -16,7 +16,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         jButton6.setOpaque(false);
         jButton6.setContentAreaFilled(false);
         jButton6.setBorderPainted(false);
-
+        //buttons
     }
 
     /**
