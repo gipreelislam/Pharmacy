@@ -66,6 +66,9 @@ public class cahier extends javax.swing.JFrame  {
     private boolean selected(){
     if (c_check.isSelected())
         check = false;
+    else{
+    check = true;
+    }
          return check;
     }
     private void fillemployeridcombobox(){
@@ -693,7 +696,7 @@ public class cahier extends javax.swing.JFrame  {
     }//GEN-LAST:event_type_txtItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+selected();        // TODO add your handling code here:
         
        f_name =  (String) d_f_name.getSelectedItem();
         c_n   = (String)c_name.getSelectedItem();
