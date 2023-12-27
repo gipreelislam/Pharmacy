@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 10:14 PM
+-- Generation Time: Dec 27, 2023 at 01:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -80,7 +80,7 @@ CREATE TABLE `drug` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'should be in english and unique',
   `price` int(10) UNSIGNED NOT NULL,
-  `type` enum('liquid','capsule','tablet','injection') NOT NULL COMMENT '''liquid'',''capsule'',''tablet'',''injection''',
+  `type` enum('liquid','tablet','injection','capsule') NOT NULL COMMENT '''liquid'',''capsule'',''tablet'',''injection''',
   `number_of_blisters` tinyint(3) UNSIGNED DEFAULT NULL,
   `current_quantity` tinyint(3) UNSIGNED NOT NULL,
   `min_quantity` tinyint(3) UNSIGNED NOT NULL,
@@ -141,7 +141,9 @@ INSERT INTO `drug` (`id`, `name`, `price`, `type`, `number_of_blisters`, `curren
 (46, 'MILLITOFIX', 303, 'tablet', 2, 12, 25, 'C', 0000000004),
 (47, 'SOFENACIN 10 MG', 91, 'tablet', 2, 43, 25, 'C', 0000000003),
 (48, 'TICANASE PLUS', 63, 'liquid', 2, 23, 35, 'C', 0000000002),
-(49, 'CANDEPRESSIN', 48, 'tablet', 2, 54, 25, 'C', 0000000003);
+(49, 'CANDEPRESSIN', 48, 'tablet', 2, 54, 25, 'C', 0000000003),
+(50, 'Flagyl 1000 mg', 20, 'injection', 30, 20, 15, 'A', 0000000001),
+(51, 'sal3ay', 15, 'injection', 1, 5, 10, 'A', 0000000001);
 
 -- --------------------------------------------------------
 
@@ -178,11 +180,22 @@ INSERT INTO `employer` (`id`, `name`, `username`, `password`) VALUES
 CREATE TABLE `payment` (
   `id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `cost` int(11) UNSIGNED NOT NULL,
-  `paid` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'the default of the payment is paid',
+  `paid` varchar(7) NOT NULL DEFAULT 'paid' COMMENT 'the default of the payment is paid',
   `employer_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `customer_id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `customer_id` int(10) UNSIGNED ZEROFILL DEFAULT NULL,
   `date_time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `cost`, `paid`, `employer_id`, `customer_id`, `date_time`) VALUES
+(0000000001, 55, 'paid', 00003, 0000000002, '2023-12-23 13:40:49'),
+(0000000002, 75, 'paid', 00001, 0000000001, '2023-12-23 13:42:29'),
+(0000000003, 45, 'paid', 00004, 0000000004, '2023-12-23 13:50:10'),
+(0000000004, 235, 'paid', 00002, 0000000002, '2023-12-23 14:56:54'),
+(0000000005, 234, 'paid', 00004, 0000000001, '2023-12-23 15:02:38');
 
 -- --------------------------------------------------------
 
@@ -210,7 +223,8 @@ INSERT INTO `supplier` (`id`, `name`, `phone_number`) VALUES
 (0000000007, 'Deana Saunders', '201145324554'),
 (0000000008, 'Angelica Poole', '201545326346'),
 (0000000009, 'Lupe Owen', '201004312423'),
-(0000000010, 'Byron Gregory', '201253425526');
+(0000000010, 'Byron Gregory', '201253425526'),
+(0000000011, 'amr shawky', '01025518153');
 
 --
 -- Indexes for dumped tables
@@ -263,7 +277,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `drug`
 --
 ALTER TABLE `drug`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `employer`
@@ -275,13 +289,13 @@ ALTER TABLE `employer`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

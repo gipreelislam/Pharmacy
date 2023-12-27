@@ -34,7 +34,7 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         Dashboard = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Suppliers = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         cahier = new javax.swing.JButton();
@@ -78,15 +78,15 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 280, 240));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
-        jButton4.setText("Suppliers");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Suppliers.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Suppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateUser.png"))); // NOI18N
+        Suppliers.setText("Suppliers");
+        Suppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SuppliersActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 280, 240));
+        getContentPane().add(Suppliers, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 280, 240));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/viewUser.png"))); // NOI18N
@@ -169,9 +169,9 @@ public class PharmacistDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cahierActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new Edit().show();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void SuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuppliersActionPerformed
+        new supplier().show();
+    }//GEN-LAST:event_SuppliersActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new Bill().show();
@@ -218,12 +218,12 @@ public class PharmacistDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dashboard;
+    private javax.swing.JButton Suppliers;
     private javax.swing.JButton cahier;
     private javax.swing.JButton exit1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

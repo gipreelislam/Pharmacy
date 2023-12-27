@@ -1,3 +1,5 @@
+package Class;
+
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -7,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +17,11 @@ import javax.swing.table.DefaultTableModel;
 public class Utility {
 
     public static Connection con;
+    public static String drugname ;
+    public static int customerid  ;
+    public static  int employerid ;
+    public static int dprice ;
+    public static Date ddt ;
    
 
 
@@ -66,4 +74,31 @@ public class Utility {
         }
     }
     
+    public static void set_payment(String drug_name ,int customer_id , int employer_id , int price) {
+    drug_name = drugname; 
+    customer_id =customerid;
+    employer_id = employerid;
+    price = dprice;
+    
+    }
+     public static String get_drug_name() {
+    return drugname; 
+    
+    }
+      public static int get_cust_id() {
+    return customerid; 
+    
+    }
+       public static int get_empl_id() {
+    return employerid; 
+    
+    }
+         public static int get_d_price() {
+    return dprice; 
+    
+    }
+     public static Date get_date() {
+      return ddt; 
+    
+    }
 }
